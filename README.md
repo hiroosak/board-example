@@ -1,4 +1,4 @@
-## Boards
+## Board
 
 express + mongoose + AngularJS で試しに作ったサンプルアプリ
 
