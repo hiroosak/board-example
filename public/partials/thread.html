@@ -1,0 +1,31 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>{{thread.name}}</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div style="white-space: pre;" class="jumbotron">{{thread.content}}</div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10"><i class="fa fa-pencil"></i> {{thread.user.profile.name}}</div>
+  <div class="col-md-2"><a ng-hide="thread.user._id != user._id" ng-click="destroyThread(thread)"><i class="fa fa-times"></i> スレッド削除</a></div>
+</div>
+<div class="row">
+  <div class="col-md-12"></div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h3>コメント<a ng-show="isLogin" ng-href="#/threads/{{thread._id}}/responses/create" class="btn btn-info navbar-btn">コメントをする</a></h3>
+  </div>
+</div>
+<div ng-repeat="response in responses" class="row response-item">
+  <div class="col-md-1"><img ng-src="{{response.user.profile.picture}}" width="48" class="img-circle"/></div>
+  <div class="col-md-9">
+    <p><i class="fa fa-pencil"></i> {{response.user.profile.name}}</p>
+    <p style="white-space: pre;">{{response.content}}</p>
+  </div>
+  <div class="col-md-2"><a ng-show="response.user._id == user._id" ng-click="destroyResponse(response)"><i class="fa fa-times"></i> コメント削除</a></div>
+</div>

@@ -1,0 +1,33 @@
+.row
+  .col-md-12
+    h2 {{thread.name}}
+.row
+  .col-md-12
+    .jumbotron(style="white-space: pre;") {{thread.content}}
+.row
+  .col-md-10
+    i.fa.fa-pencil
+    |  {{thread.user.profile.name}}
+  .col-md-2
+    a(ng-hide='thread.user._id != user._id', ng-click='destroyThread(thread)')
+      i.fa.fa-times
+      |  スレッド削除
+.row
+  .col-md-12
+.row
+  .col-md-12
+    h3 コメント
+      a.btn.btn-info.navbar-btn(ng-show='isLogin', ng-href='#/threads/{{thread._id}}/responses/create')
+        | コメントをする
+.row.response-item(ng-repeat='response in responses')
+  .col-md-1
+    img.img-circle(ng-src='{{response.user.profile.picture}}', width="48")
+  .col-md-9
+    p
+      i.fa.fa-pencil
+      |  {{response.user.profile.name}}
+    p(style="white-space: pre;") {{response.content}}
+  .col-md-2
+    a(ng-show='response.user._id == user._id', ng-click='destroyResponse(response)')
+      i.fa.fa-times
+      |  コメント削除

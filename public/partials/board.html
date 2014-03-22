@@ -1,0 +1,3 @@
+
+<h2>{{board.name}}</h2><a ng-show="isLogin" ng-href="#/boards/{{board._id}}/threads/create" class="btn btn-info navbar-btn">スレッドを投稿する</a>
+<div class="list-group"><a href="#/threads/{{thread._id}}" ng-repeat="thread in threads" class="list-group-item">{{thread.name}}<small>({{thread.created}})</small></a></div>

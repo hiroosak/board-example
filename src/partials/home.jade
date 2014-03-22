@@ -1,0 +1,12 @@
+.row.align-center
+  h2 Board Sample
+  p node.js + express + AngularJS を使った簡易掲示板
+.row.align-center(ng-hide="isLogin")
+  a(href="/auth/twitter")
+    div.col-md-3.col-md-offset-3.mouse-hover
+      i.fa.fa-twitter-square.twitter-color.fa-8x
+      p twitterでログイン
+  a(href="/auth/facebook")
+    div.col-md-3.mouse-hover
+      i.fa.fa-facebook-square.facebook-color.fa-8x
+      p facebookでログイン

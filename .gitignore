@@ -1,0 +1,10 @@
+node_modules
+dist
+.tmp
+*.sample
+.sass-cache
+app_bak
+public/bower_components
+test/bower_components
+dump.rdb
+*.bak

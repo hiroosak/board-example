@@ -1,0 +1,7 @@
+h2 {{board.name}}
+a.btn.btn-info.navbar-btn(ng-show='isLogin', ng-href='#/boards/{{board._id}}/threads/create')
+  | スレッドを投稿する
+.list-group
+  a.list-group-item(href='#/threads/{{thread._id}}', ng-repeat='thread in threads')
+    | {{thread.name}}
+    small ({{thread.created}})

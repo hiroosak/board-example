@@ -1,0 +1,50 @@
+doctype html
+html(lang="ja")
+  head
+    title= title
+    if 'production' == settings.env
+      link(rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css")
+      link(rel="stylesheet" href='/css/board.css')
+      script(src='/js/vendor.min.js')
+      script(src='/js/board.min.js')
+    else
+      link(rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css")
+      link(rel="stylesheet" href='/css/board.css')
+      script(src='/bower_components/lodash/dist/lodash.js')
+      script(src='/bower_components/angular/angular.js')
+      script(src='/bower_components/angular-route/angular-route.js')
+      script(src='/bower_components/angular-cookies/angular-cookies.js')
+      script(src='/bower_components/angular-resource/angular-resource.js')
+      script(src='/bower_components/angular-animate/angular-animate.js')
+      script(src='/bower_components/angular-growl/build/angular-growl.js')
+      script(src='/bower_components/angular-local-storage/angular-local-storage.js')
+      script(src='/bower_components/angular-bootstrap/ui-bootstrap.js')
+      script(src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js")
+      script(src='/js/board.js')
+  body(ng-app='boardApp')
+    .navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href="/") Board
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href="/docs") docs
+          ul.nav.navbar-nav.navbar-right(ng-controller="HeaderNavRightCtrl")
+            li(ng-if="isLogin")
+              a(href="#")
+                img.img-circle(ng-src="{{profile.picture}}", width="24", height="24")
+                |  {{profile.name}}
+            li(ng-if="!isLogin")
+              a(href="/") ログインする
+    .container
+      .row
+        .col-md-2(ng-controller="SideMenuCtrl")
+          accordion(close-others="oneAtATime")
+            accordion-group(heading="{{category.name}}", ng-repeat="category in categories")
+              div.list-group.boards
+                a.list-group-item.board-item(href="#/boards/{{board._id}}", ng-repeat="board in category.boards") {{board.name}}
+        .col-md-10
+          block content
+          div(ng-view='')
+    div(growl="true")

@@ -1,0 +1,16 @@
+h2 コメント作成
+div(ng-controller="CreateResponseFormCtrl")
+  form.form-horizontal(role="form", name="form")
+    .form-group
+      label.col-sm-2.control-label 投稿先
+      div.col-sm-10
+        p.form-control-static {{thread.name}}
+    .form-group
+      label.col-sm-2.control-label
+        | 内容
+        span.error(ng-show="form.content.$error.maxlength") 2000文字以内
+      .col-sm-10
+        textarea.form-control(name="content", rows="8", ng-model="response.content", ng-maxlength="1000", placeholder="内容を入力", required="true")
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        button.btn.btn-default(type="submit", ng-click="submit(response)", ng-disabled="form.$invalid") 投稿
