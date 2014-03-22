@@ -16,7 +16,7 @@
         if (err) { throw new Error; }
         res.thread.should.be.ok;
         res.responses.should.be.ok;
-        res.responses[0].should.have.property('content', fixture.data.response.content);
+        res.responses[res.responses.length - 1].should.have.property('content', fixture.data.response.content);
         done();
       });
     });
