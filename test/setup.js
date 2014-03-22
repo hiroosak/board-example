@@ -19,7 +19,7 @@ module.exports = function() {
   });
 
   before(function(done) {
-    mongoose.connect('mongodb://localhost:17017/board_test', null, function(err, res) {
+    mongoose.connect('mongodb://localhost:27017/board_test', null, function(err, res) {
       connection.db.dropDatabase(function(err, res) {
         fixture.exec(done);
       });

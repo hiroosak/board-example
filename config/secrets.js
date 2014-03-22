@@ -14,18 +14,6 @@ if ('production' === process.env.NODE_ENV) {
     clientSecret: 'facebook-client-secret',
     callbackURL: 'http://localhost/auth/facebook/callback'
   };
-} else if ('test' === proces.env.NODE_ENV) {
-  db = 'travis:test@localhost:27017/board_test';
-  twitter = {
-    consumerKey: 'twitter-consumer-key',
-    consumerSecret: 'twitter-consumer-secret',
-    callbackURL: '/auth/twitter/callback'
-  };
-  facebook = {
-    clientID: 'facebook-client-id',
-    clientSecret: 'facebook-client-secret',
-    callbackURL: 'http://localhost/auth/facebook/callback'
-  };
 } else {
   db = 'localhost:17017/board';
   twitter = {
