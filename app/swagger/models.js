@@ -1,6 +1,15 @@
 'use strict';
 
 module.exports = {
+  'Status': {
+    'id': 'Status',
+    'properties': {
+      'status': {
+        'type': 'string',
+        'format': 'string'
+      }
+    }
+  },
   'Profile': {
     'id': 'Profile',
     'required': ['name'],

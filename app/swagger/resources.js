@@ -143,7 +143,27 @@ exports.postResources = [
       'produces': [
         'application/json'
       ],
-      'nickname' : 'createBoard'
+      'nickname' : 'createThread'
+    }
+  },
+  {
+    'spec': {
+      'type' : 'Status',
+      'summary' : 'requires authentication',
+      'notes' : 'スレッドの削除',
+      'path' : '/threads/{threadId}/destroy',
+      'method': 'POST',
+      'parameters' : [
+        authorizationParams(),
+        swagger.pathParam('threadId', 'スレッドID', 'string'),
+      ],
+      'responseMessages' : [
+        swagger.errors.invalid('input')
+      ],
+      'produces': [
+        'application/json'
+      ],
+      'nickname' : 'deleteThread'
     }
   },
   {
@@ -163,6 +183,26 @@ exports.postResources = [
         'application/json'
       ],
       'nickname' : 'createBoard'
+    }
+  },
+  {
+    'spec': {
+      'type' : 'Status',
+      'summary' : 'requires authentication',
+      'notes' : 'コメントの削除',
+      'path' : '/responses/{responseId}/destroy',
+      'method': 'POST',
+      'parameters' : [
+        authorizationParams(),
+        swagger.pathParam('responseId', 'コメントID', 'string'),
+      ],
+      'responseMessages' : [
+        swagger.errors.invalid('input')
+      ],
+      'produces': [
+        'application/json'
+      ],
+      'nickname' : 'deleteResponse'
     }
   },
   {
