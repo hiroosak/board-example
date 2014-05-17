@@ -5,11 +5,10 @@
  */
 
 var express = require('express')
-  , MongoStore = require('connect-mongo')(express)
+  , RedisStore = require('connect-redis')(express)
   , http = require('http')
   , url  = require('url')
   , path = require('path')
-  , mongoose = require('mongoose')
   , swagger = require('swagger-node-express')
   , passport = require('passport');
 
@@ -19,16 +18,6 @@ var app = express();
  * API keys + Passport configuration.
  */
 var secrets = require('./config/secrets');
-
-/**
- * Mongoose configuration.
- */
-
-mongoose.connect(secrets.db);
-mongoose.connection.on('error', function() {
-  console.log('✗ MongoDB Connection Error. Please make sure MongoDB is running.'.red);
-});
-
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -49,9 +38,9 @@ app.use(express.session({
     maxAge: 24 * 60 * 60 * 1000, // 24hours
     httpOnly: true
   },
-  store: new MongoStore({
-    db: mongoose.connection.db,
-    auto_reconnect: true
+  store: new RedisStore({
+    db: 1,
+    secret:secrets.session.secret
   })
 }));
 
