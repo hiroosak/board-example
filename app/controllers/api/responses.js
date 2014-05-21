@@ -1,6 +1,6 @@
 'use strict';
 
-var Response = require('../../models/response.js');
+//var Response = require('../../models/response.js');
 
 exports.index = function(req, res) {
   Response.find()

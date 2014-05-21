@@ -10,6 +10,7 @@ var express = require('express')
   , url  = require('url')
   , path = require('path')
   , swagger = require('swagger-node-express')
+  , db = require('./app/models')
   , passport = require('passport');
 
 var app = express();

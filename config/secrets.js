@@ -3,7 +3,6 @@
 var db, twitter, facebook;
 
 if ('production' === process.env.NODE_ENV) {
-  db = 'mongodb://dbuser:dbpass@localhost:31407/boardapp';
   twitter = {
     consumerKey: 'twitter-consumer-key',
     consumerSecret: 'twitter-consumer-secret',
@@ -15,7 +14,6 @@ if ('production' === process.env.NODE_ENV) {
     callbackURL: 'http://localhost/auth/facebook/callback'
   };
 } else {
-  db = 'localhost:17017/board';
   twitter = {
     consumerKey: 'twitter-consumer-key',
     consumerSecret: 'twitter-consumer-secret',

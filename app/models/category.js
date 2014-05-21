@@ -1,18 +1,16 @@
-'use strict';
-
-var mongoose = require('mongoose')
-  , Board = require('./board');
-
-var categorySchema = new mongoose.Schema({
-  name: String,
-  orderNum: {type: Number, default: 0},
-  boards: [{type: mongoose.Schema.Types.ObjectId, ref: 'Board'}],
-  created: {type: Date, default: Date.now },
-  updated: {type: Date, default: Date.now }
-});
-
-categorySchema.static('tree', function() {
-  return this.find().sort('orderNum').populate('boards');
-});
-
-module.exports = mongoose.model('Category', categorySchema);
+module.exports = function(sequelize, DataTypes) {
+  var Category = sequelize.define('Category', {
+    name: DataTypes.STRING,
+    orderNum: DataTypes.INTEGER,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
+  }, {
+    tableName: 'categories',
+    classMethods: {
+      associate: function(models) {
+        Category.hasMany(models.Board);
+      }
+    }
+  });
+  return Category;
+};

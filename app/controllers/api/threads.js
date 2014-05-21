@@ -1,7 +1,7 @@
 'use strict';
 
-var Thread = require('../../models/thread.js')
-  , _      = require('lodash');
+//var Thread = require('../../models/thread.js')
+//  , _      = require('lodash');
 
 exports.index = function(req, res) {
   var params = {};

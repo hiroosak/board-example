@@ -1,6 +1,6 @@
 'use strict';
 
-var Board = require('../../models/board.js');
+//var Board = require('../../models/board.js');
 
 exports.index = function(req, res) {
   //Board.find({}, null, {sort: 'asc', orderNum: 1}, function(err, boards) {
